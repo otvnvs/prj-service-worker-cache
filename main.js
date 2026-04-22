@@ -707,6 +707,6 @@ updateSWBadge();
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.getRegistration().then((reg) => {
     if (!reg)
-      navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' });
+      navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' });
   });
 }
