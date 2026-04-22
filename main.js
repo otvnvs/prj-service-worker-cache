@@ -649,7 +649,7 @@ window.addEventListener('touchend', () => {
 function sendActionToSW(action) {
   const sw = navigator.serviceWorker?.controller;
   if (!sw) {
-    log('No active Service Worker — try reloading the page.', 'err');
+    console.log('No active Service Worker — try reloading the page.', 'err');
     return;
   }
   //setStatus(action === 'CLEAN_UP' ? 'Dehydrating...' : 'Rehydrating...');
