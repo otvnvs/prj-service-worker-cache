@@ -3,17 +3,17 @@ const CACHE_NAME = 'voidrun-v1';
 // All CSS files are explicitly listed so they are pre-cached on install.
 // The whole point of this demo: the game is fully playable offline.
 const PRECACHE_ASSETS = [
-  '/',
-  '/index.html',
-  '/main.js',
-  '/css/theme.css',
-  '/css/stars.css',
-  '/css/player.css',
-  '/css/enemies.css',
-  '/css/bullets.css',
-  '/css/explosions.css',
-  '/css/hud.css',
-  '/favicon.ico',
+  './',
+  './index.html',
+  './main.js',
+  './css/theme.css',
+  './css/stars.css',
+  './css/player.css',
+  './css/enemies.css',
+  './css/bullets.css',
+  './css/explosions.css',
+  './css/hud.css',
+  './favicon.ico',
 ];
 
 self.addEventListener('install', (event) => {
