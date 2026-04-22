@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <title>Voidrun — SW Cache Demo</title>
+
+    <!-- All these files are cached by the service worker -->
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/stars.css" />
+    <link rel="stylesheet" href="css/player.css" />
+    <link rel="stylesheet" href="css/enemies.css" />
+    <link rel="stylesheet" href="css/bullets.css" />
+    <link rel="stylesheet" href="css/explosions.css" />
+    <link rel="stylesheet" href="css/hud.css" />
+
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <div id="game-wrapper">
+      <div id="arena">
+        <!-- Star layers -->
+        <div class="star-layer star-layer-1"></div>
+        <div class="star-layer star-layer-2"></div>
+        <div class="star-layer star-layer-3"></div>
+
+        <!-- Player ship -->
+        <div class="player" id="player">
+          <div class="player-engine" id="player-engine"></div>
+        </div>
+
+        <!-- HUD -->
+        <div id="hud">
+          <div class="hud-block">
+            <span class="hud-label">Score</span>
+            <span class="hud-value" id="hud-score">000000</span>
+          </div>
+          <div class="hud-block" style="align-items: center">
+            <span class="hud-label">Lives</span>
+            <div id="hud-lives"></div>
+          </div>
+          <div class="hud-block" style="align-items: flex-end">
+            <span class="hud-label">Level</span>
+            <span class="hud-value" id="hud-level">1</span>
+          </div>
+        </div>
+
+        <!-- Boss HP bar -->
+        <div id="boss-bar" class="hidden">
+          <div id="boss-bar-label">BOSS</div>
+          <div id="boss-bar-track">
+            <div id="boss-bar-fill"></div>
+          </div>
+        </div>
+
+        <!-- SW indicator -->
+        <div id="sw-indicator">SW: loading</div>
+      </div>
+      <!-- /arena -->
+
+      <!-- Start screen -->
+      <div class="screen" id="screen-start">
+        <h1>Voidrun</h1>
+        <p>Arrow keys / WASD to move &mdash; Space or Z to fire</p>
+        <p>
+          Destroy enemies to trigger the boss. Collect stars for spread shot.
+        </p>
+        <button class="btn" onclick="startGame()">Start Game</button>
+        <!-- <button class="btn" onclick="sendActionToSW('CLEAN_UP')">Clean Up</button> -->
+        <button class="btn" onclick="sendActionToSW('REFRESH_ALL')">
+          Refresh
+        </button>
+        <p style="margin-top: 12px; font-size: 0.65rem; color: #444">
+          All CSS assets cached by Service Worker &mdash; works offline after
+          first load
+        </p>
+      </div>
+
+      <!-- Game over screen -->
+      <div class="screen hidden" id="screen-gameover">
+        <h1>Game Over</h1>
+        <p class="score-final" id="final-score">000000</p>
+        <button class="btn" onclick="startGame()">Try Again</button>
+      </div>
+    </div>
+    <!-- /game-wrapper -->
+
+    <script src="main.js"></script>
+  </body>
+</html>

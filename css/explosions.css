@@ -1,0 +1,219 @@
+/* All explosions are pure CSS animations on divs */
+
+.explosion {
+  position: absolute;
+  pointer-events: none;
+  z-index: 20;
+  transform: translate(-50%, -50%);
+}
+
+/* Small explosion (scout) */
+.explosion-sm {
+  width: 30px;
+  height: 30px;
+  animation: explode-sm 0.4s ease-out forwards;
+}
+
+.explosion-sm::before,
+.explosion-sm::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.explosion-sm::before {
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(
+    circle,
+    var(--yellow) 0%,
+    var(--accent2) 50%,
+    transparent 100%
+  );
+  animation: ring-expand-sm 0.4s ease-out forwards;
+}
+
+.explosion-sm::after {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  animation: core-fade 0.2s ease-out forwards;
+}
+
+@keyframes explode-sm {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes ring-expand-sm {
+  0% {
+    width: 4px;
+    height: 4px;
+    opacity: 1;
+  }
+  100% {
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+  }
+}
+
+/* Medium explosion (fighter/heavy) */
+.explosion-md {
+  width: 50px;
+  height: 50px;
+  animation: explode-md 0.5s ease-out forwards;
+}
+
+.explosion-md::before {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    #fff 0%,
+    var(--yellow) 30%,
+    var(--accent2) 70%,
+    transparent 100%
+  );
+  animation: ring-expand-md 0.5s ease-out forwards;
+}
+
+@keyframes explode-md {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes ring-expand-md {
+  0% {
+    width: 6px;
+    height: 6px;
+    opacity: 1;
+  }
+  100% {
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+  }
+}
+
+/* Large explosion (boss) */
+.explosion-lg {
+  width: 80px;
+  height: 80px;
+  animation: explode-lg 0.8s ease-out forwards;
+}
+
+.explosion-lg::before {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    #fff 0%,
+    var(--yellow) 20%,
+    #ff8800 50%,
+    var(--accent2) 75%,
+    transparent 100%
+  );
+  animation: ring-expand-lg 0.8s ease-out forwards;
+}
+
+.explosion-lg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  animation: ring-expand-lg2 0.8s 0.1s ease-out forwards;
+}
+
+@keyframes explode-lg {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes ring-expand-lg {
+  0% {
+    width: 8px;
+    height: 8px;
+    opacity: 1;
+  }
+  100% {
+    width: 120px;
+    height: 120px;
+    opacity: 0;
+  }
+}
+@keyframes ring-expand-lg2 {
+  0% {
+    width: 4px;
+    height: 4px;
+    opacity: 0.8;
+  }
+  100% {
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+  }
+}
+
+@keyframes core-fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Screen shake */
+@keyframes screen-shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-4px, 2px);
+  }
+  40% {
+    transform: translate(4px, -2px);
+  }
+  60% {
+    transform: translate(-2px, 4px);
+  }
+  80% {
+    transform: translate(2px, -4px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+#arena.shake {
+  animation: screen-shake 0.25s ease-out;
+}

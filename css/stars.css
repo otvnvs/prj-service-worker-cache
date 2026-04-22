@@ -1,0 +1,59 @@
+/* Three layers of stars for parallax depth */
+.star-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* Layer 1 — slow, large */
+.star-layer-1 .star {
+  width: 2px;
+  height: 2px;
+  opacity: 0.6;
+  animation: star-fall-1 linear infinite;
+}
+/* Layer 2 — medium */
+.star-layer-2 .star {
+  width: 1.5px;
+  height: 1.5px;
+  opacity: 0.4;
+  animation: star-fall-2 linear infinite;
+}
+/* Layer 3 — fast, tiny */
+.star-layer-3 .star {
+  width: 1px;
+  height: 1px;
+  opacity: 0.25;
+  animation: star-fall-3 linear infinite;
+}
+
+@keyframes star-fall-1 {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(110vh);
+  }
+}
+@keyframes star-fall-2 {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(110vh);
+  }
+}
+@keyframes star-fall-3 {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(110vh);
+  }
+}

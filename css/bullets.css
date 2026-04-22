@@ -1,0 +1,103 @@
+/* ---- Player bullets ---- */
+.bullet {
+  position: absolute;
+  pointer-events: none;
+  z-index: 11;
+  transform: translateX(-50%);
+}
+
+.bullet-player {
+  width: 3px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 2px;
+  box-shadow:
+    0 0 6px var(--accent),
+    0 0 12px var(--accent);
+}
+
+/* Spread shot (angled bullets) */
+.bullet-player-spread {
+  width: 3px;
+  height: 10px;
+  background: var(--green);
+  border-radius: 2px;
+  box-shadow: 0 0 5px var(--green);
+}
+
+/* ---- Enemy bullets ---- */
+.bullet-enemy {
+  width: 5px;
+  height: 5px;
+  background: var(--accent2);
+  border-radius: 50%;
+  box-shadow:
+    0 0 8px var(--accent2),
+    0 0 16px var(--accent2);
+}
+
+.bullet-enemy-heavy {
+  width: 7px;
+  height: 12px;
+  background: #ff8800;
+  border-radius: 3px;
+  box-shadow: 0 0 8px #ff8800;
+}
+
+/* Boss laser */
+.bullet-boss {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  box-shadow: 0 0 12px var(--accent);
+  animation: laser-spin 0.3s linear infinite;
+}
+
+@keyframes laser-spin {
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+/* Powerup (bonus item) */
+.powerup {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: var(--yellow);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  box-shadow: 0 0 10px var(--yellow);
+  animation:
+    powerup-spin 2s linear infinite,
+    powerup-bob 1s ease-in-out infinite;
+  z-index: 8;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+@keyframes powerup-spin {
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+@keyframes powerup-bob {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: -4px;
+  }
+}

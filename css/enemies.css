@@ -1,0 +1,141 @@
+/* ---- Base enemy ---- */
+.enemy {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9;
+  transform: translateX(-50%);
+}
+
+/* ---- Type A: Scout — small diamond ---- */
+.enemy-a {
+  width: 22px;
+  height: 22px;
+}
+.enemy-a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent2);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.enemy-a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: var(--yellow);
+  border-radius: 50%;
+}
+
+/* ---- Type B: Fighter — wide wedge ---- */
+.enemy-b {
+  width: 36px;
+  height: 26px;
+}
+.enemy-b::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #8800cc;
+  clip-path: polygon(50% 100%, 0% 0%, 35% 30%, 65% 30%, 100% 0%);
+}
+.enemy-b::after {
+  content: '';
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #cc44ff;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+/* ---- Type C: Heavy — squat hexagon ---- */
+.enemy-c {
+  width: 40px;
+  height: 34px;
+}
+.enemy-c::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #cc4400;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+.enemy-c::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  background: #ff8844;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+/* ---- Boss — large composite shape ---- */
+.enemy-boss {
+  width: 60px;
+  height: 48px;
+}
+.enemy-boss::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #003388;
+  clip-path: polygon(50% 100%, 0% 60%, 10% 0%, 90% 0%, 100% 60%);
+  border: none;
+}
+.enemy-boss::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+/* Boss shield glow */
+.enemy-boss-shield {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 229, 255, 0.4);
+  animation: boss-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes boss-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Hit flash */
+.enemy.hit::before {
+  background: #ffffff;
+}
+@keyframes enemy-hit {
+  0% {
+    filter: brightness(5);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+.enemy.hit {
+  animation: enemy-hit 0.15s ease-out;
+}
